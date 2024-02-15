@@ -11,7 +11,8 @@ interface ForcastData {
 }
 
 export default function Home() {
-    let area: String[] = ["山梨県", "長野県", "岐阜県", "静岡県", "愛知県"];
+    const area: String[] = ["山梨県", "長野県", "岐阜県", "静岡県", "愛知県"];
+    const code: String[] = ["190000", "200000", "210000", "220000", "230000"];
     const [idx, setIdx] = useState<number>(0);
     const inc = () => {
         setIdx((idx + 1) % area.length);
@@ -23,8 +24,7 @@ export default function Home() {
     const [data, setData] = useState<ForcastData>();
 
     useEffect(() => {
-        const apiUrl =
-            "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json";
+        const apiUrl = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${code[idx]}.json`;
         const fetchData = async () => {
             try {
                 const response = await fetch(apiUrl);
@@ -36,7 +36,7 @@ export default function Home() {
         };
 
         fetchData();
-    }, []);
+    }, [idx]);
 
     return (
         <div>
