@@ -42,7 +42,7 @@ export default function Home() {
     return (
         <div>
             <p>{provinces[idx].name}</p>
-            <p>{data && data.text}</p>
+            <p>{data ? data.text : "Now Loading"}</p>
             <ProvinceSelectButton
                 length={provinces.length}
                 setIdx={setIdx}
