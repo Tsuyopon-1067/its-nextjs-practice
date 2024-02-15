@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Province from "./Province";
+import ProvinceSelectButton from "./conponents/ProvinceSelectButton";
 
 interface ForcastData {
     publishingOffice: string;
@@ -11,20 +13,19 @@ interface ForcastData {
 }
 
 export default function Home() {
-    const area: String[] = ["山梨県", "長野県", "岐阜県", "静岡県", "愛知県"];
-    const code: String[] = ["190000", "200000", "210000", "220000", "230000"];
+    const provinces: Province[] = [
+        new Province("山梨県", "190000"),
+        new Province("長野県", "200000"),
+        new Province("岐阜県", "210000"),
+        new Province("静岡県", "220000"),
+        new Province("愛知県", "230000"),
+    ];
     const [idx, setIdx] = useState<number>(0);
-    const inc = () => {
-        setIdx((idx + 1) % area.length);
-    };
-    const dec = () => {
-        setIdx((idx + area.length - 1) % area.length);
-    };
 
     const [data, setData] = useState<ForcastData>();
 
     useEffect(() => {
-        const apiUrl = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${code[idx]}.json`;
+        const apiUrl = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${provinces[idx].code}.json`;
         const fetchData = async () => {
             try {
                 const response = await fetch(apiUrl);
@@ -40,10 +41,13 @@ export default function Home() {
 
     return (
         <div>
-            <p>{area[idx]}</p>
+            <p>{provinces[idx].name}</p>
             <p>{data && data.text}</p>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
+            <ProvinceSelectButton
+                length={provinces.length}
+                setIdx={setIdx}
+                idx={idx}
+            />
         </div>
     );
 }
