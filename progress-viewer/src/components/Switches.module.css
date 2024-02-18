@@ -1,0 +1,12 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 60pt;
+}
+
+.label {
+    grid-column: 1 / 2;
+}
+
+.sw_div {
+    grid-column: 2 / 3;
+}

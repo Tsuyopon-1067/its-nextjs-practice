@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import styles from "./App.module.css";
+import SwitchInfo from './components/SwitchInfo';
+import Switchs from './components/Switches';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [formerLabelInfos, setFormerLabelInfos] = useState<SwitchInfo[]>(
+    [
+      new SwitchInfo("雛形作成"),
+      new SwitchInfo("起動"),
+      new SwitchInfo("ページ編集"),
+      new SwitchInfo("変数の表示"),
+      new SwitchInfo("ボタンの追加"),
+      new SwitchInfo("UseState の導入"),
+      new SwitchInfo("外部サーバへのアクセス"),
+      new SwitchInfo("他の都道府県の表示")
+    ]
+  );
+  const [latterLabelInfos, setLatterLabelInfos] = useState<SwitchInfo[]>(
+    [
+      new SwitchInfo("都道府県データのクラス化"),
+      new SwitchInfo("コンポーネントの導入"),
+      new SwitchInfo("NowLoading を作ってみる"),
+    ]
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className={styles.main_div}>
+      <p className={styles.title_p}>基本</p>
+      <Switchs labels={formerLabelInfos} handler={setFormerLabelInfos} />
+      <p className={styles.title_p}>発展</p>
+      <Switchs labels={latterLabelInfos} handler={setLatterLabelInfos} />
+    </div>
   )
 }
 
