@@ -1,5 +1,6 @@
 #body {
   margin: 0;
+  background-color: #242424;
 }
 
 #root {
@@ -18,25 +19,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 @media (prefers-color-scheme: light) {
-  #root {
+  #body {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  #root {
+    color: #213547;
+    background-color: #ffffff;
   }
 }
 
