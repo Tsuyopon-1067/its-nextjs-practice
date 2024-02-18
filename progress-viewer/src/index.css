@@ -2,6 +2,7 @@
   margin: 0;
   display: flex;
   align-items: flex-start;
+  background-color: #242424;
 }
 
 #root {
@@ -12,7 +13,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,32 +20,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 @media (prefers-color-scheme: light) {
-  #root {
+  #body {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  #root {
+    color: #213547;
+    background-color: #ffffff;
   }
 }
