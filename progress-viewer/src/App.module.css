@@ -1,0 +1,18 @@
+.main_div {
+    width: 100vw;
+}
+
+.header {
+    margin: 0 0 30pt 0;
+}
+
+.sw_div {
+    width: 210pt;
+    margin: 0 auto;
+}
+
+.title_p {
+    font-size: 1.5em;
+    margin: 8pt 0pt;
+    text-align: center;
+}
