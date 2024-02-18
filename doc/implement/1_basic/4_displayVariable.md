@@ -32,3 +32,10 @@ export default function Home() {
     );
 }
 ```
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：1-3. ページ編集](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/3_pageEdit.md)
+
+[次へ：1-5. ボタンの追加](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/5_button.md)

@@ -214,3 +214,10 @@ export default function Home() {
 }
 
 ```
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：2-1. 都道府県データのクラス化](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/2_refactoring/1_class.md)
+
+[次へ：2-3. NowLoading を作ってみる](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/2_refactoring/3_nowLoading.md)

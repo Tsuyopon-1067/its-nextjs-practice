@@ -44,3 +44,8 @@ tree コマンドで生成したファイルを確認． -L オプションで�
     ├── src
     └── tsconfig.json
 ```
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[次へ：1-2. 起動](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/2_run.md)

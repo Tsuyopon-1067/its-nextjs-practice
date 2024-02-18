@@ -58,3 +58,10 @@ export default function Home() {
 ```
 
 なお，現時点では正しく動かない．具体的には，ボタンを押しても変更が反映されない．これについての対処は後述．
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：1-4. 変数の表示](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/4_displayVariable.md)
+
+[次へ：1-6. UseState の導入](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/6_useState.md)

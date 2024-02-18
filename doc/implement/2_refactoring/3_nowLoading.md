@@ -64,3 +64,8 @@ let hoge = (num === 3) ? 1 : 0;
 ```
 
 は，`data`が空ではない（`true`）のとき，`data.txt`を，`data`が空（`false`）のとき，"NowLoading"を出力しているという意味になる．
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：2-2. コンポーネントの導入](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/2_refactoring/2_component.md)
