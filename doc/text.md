@@ -31,6 +31,7 @@
         text-align: right;
     }
 </style>
+
 <footer class="foot">
 <a class="mid_link">説明トップ</a>
 <a class="right_link">実装→</a>
