@@ -5,6 +5,7 @@
 
 .label {
     grid-column: 1 / 2;
+    text-align: center;
 }
 
 .sw_div {

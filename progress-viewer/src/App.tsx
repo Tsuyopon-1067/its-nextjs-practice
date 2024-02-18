@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import styles from "./App.module.css";
+import ProgressData from './ProgressData';
 import SwitchInfo from './components/SwitchInfo';
 import Switchs from './components/Switches';
+import TopBar from './components/TopBar';
 
 function App() {
   const [formerLabelInfos, setFormerLabelInfos] = useState<SwitchInfo[]>(
@@ -24,13 +26,28 @@ function App() {
       new SwitchInfo("NowLoading を作ってみる"),
     ]
   );
+  const [id, setId] = useState<string>("");
+  const [jsonStr, setJsonStr] = useState<string>("");
+
+  useEffect(() => {
+    const tmp = new ProgressData(id, formerLabelInfos, latterLabelInfos);
+    const strTmp = tmp.toJson();
+    setJsonStr(strTmp);
+  }, [id, formerLabelInfos, latterLabelInfos]);
 
   return (
     <div className={styles.main_div}>
-      <p className={styles.title_p}>基本</p>
-      <Switchs labels={formerLabelInfos} handler={setFormerLabelInfos} />
-      <p className={styles.title_p}>発展</p>
-      <Switchs labels={latterLabelInfos} handler={setLatterLabelInfos} />
+      <div className={styles.header}>
+        <TopBar onchange={setId} />
+      </div>
+      <div className={styles.sw_div}>
+        <p className={styles.title_p}>基本</p>
+        <Switchs labels={formerLabelInfos} handler={setFormerLabelInfos} />
+        <br />
+        <p className={styles.title_p}>発展</p>
+        <Switchs labels={latterLabelInfos} handler={setLatterLabelInfos} />
+      </div>
+      <p>{jsonStr}</p>
     </div>
   )
 }
