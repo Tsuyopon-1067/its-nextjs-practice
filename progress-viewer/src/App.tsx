@@ -28,17 +28,15 @@ function App() {
   );
   const [id, setId] = useState<string>("");
   const [addr, setAddr] = useState<string>("");
-  const [jsonStr, setJsonStr] = useState<string>("");
 
   useEffect(() => {
     const tmp = new ProgressData(id, formerLabelInfos, latterLabelInfos);
     const strTmp = tmp.toJson();
-    setJsonStr(strTmp);
     postData(strTmp);
   }, [id, addr, formerLabelInfos, latterLabelInfos]);
 
   const postData = (data: string) => {
-    const url = `https://${addr}/json/`;
+    const url = `http://${addr}/json`;
     fetch(url, {
       method: 'POST',
       headers: {
@@ -67,8 +65,6 @@ function App() {
         <p className={styles.title_p}>発展</p>
         <Switchs labels={latterLabelInfos} handler={setLatterLabelInfos} />
       </div>
-      <p>{addr}</p>
-      <p>{jsonStr}</p>
     </div>
   )
 }
