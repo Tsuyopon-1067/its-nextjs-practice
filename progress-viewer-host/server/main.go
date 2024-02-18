@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"server/util"
+	"time"
 )
 
 var safeMap util.SafeMap
@@ -74,9 +75,7 @@ func jsonDeleteHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	fmt.Println("hoge2")
 	defer r.Body.Close()
-	fmt.Println("hoge3")
 
 	log.Printf("Received: %v", requestBody)
 	safeMap.Delete(requestBody.Id)
@@ -97,7 +96,8 @@ func getInfoHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println("GET /info")
+	currentTime := time.Now().Format("2006-01/02-15:04:05")
+	fmt.Printf("%s: GET /info\n", currentTime)
 	list := safeMap.GetData()
 	sendData := (&util.SendData{}).New(list)
 
