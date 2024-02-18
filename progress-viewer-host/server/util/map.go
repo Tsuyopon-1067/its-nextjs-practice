@@ -32,6 +32,12 @@ func (s *SafeMap) GetData() ([]ProgressInfo) {
 	return res
 }
 
+func (s *SafeMap) Delete(key string) {
+	s.mux.Lock()
+	defer s.mux.Unlock()
+	delete(s.m, key)
+}
+
 type ProgressInfo struct {
 	Id      string    `json:"id"`
     Former  []bool    `json:"formerInfo"`

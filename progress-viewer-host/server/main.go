@@ -17,16 +17,24 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func jsonHandler(w http.ResponseWriter, r *http.Request) {
-    enableCors(&w) // enable CORS
-
     if r.Method == http.MethodOptions {
         return
     }
 
-    if r.Method != http.MethodPost {
-        http.Error(w, "Only POST method is allowed", http.StatusMethodNotAllowed)
-        return
+    switch r.Method {
+        case http.MethodPost:
+            jsonPostHandler(w, r)
+        case http.MethodDelete:
+            jsonDeleteHandler(w, r)
+        default:
+            http.Error(w, "Only POST method is allowed", http.StatusMethodNotAllowed)
+            return
     }
+
+}
+
+func jsonPostHandler(w http.ResponseWriter, r *http.Request) {
+    enableCors(&w) // enable CORS
 
     var requestBody util.ProgressInfo
     err := json.NewDecoder(r.Body).Decode(&requestBody)
@@ -39,6 +47,28 @@ func jsonHandler(w http.ResponseWriter, r *http.Request) {
     log.Printf("Received: %v", requestBody)
     safeMap.Set(requestBody.Id, util.ProgressInfo{Id: requestBody.Id, Former: requestBody.Former, Latter: requestBody.Latter})
 
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(struct {
+        Status string `json:"status"`
+    }{
+        Status: "Success",
+    })
+}
+
+func jsonDeleteHandler(w http.ResponseWriter, r *http.Request) {
+    enableCors(&w) // enable CORS
+
+    var requestBody util.DeleteData
+    err := json.NewDecoder(r.Body).Decode(&requestBody)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusBadRequest)
+        return
+    }
+    defer r.Body.Close()
+
+    log.Printf("Received: %v", requestBody)
+    safeMap.Delete(requestBody.Id)
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(struct {
@@ -64,7 +94,6 @@ func getInfoHandler(w http.ResponseWriter, r *http.Request) {
     if err := json.NewEncoder(w).Encode(sendData); err != nil {
         log.Fatalf("Error encoding JSON: %v", err)
     }
-
 }
 
 func main() {
