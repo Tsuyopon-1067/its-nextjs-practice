@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import styles from "./App.module.css";
 import ProgressData from './ProgressData';
 import SwitchInfo from './components/SwitchInfo';
