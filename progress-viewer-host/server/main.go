@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"server/util"
+	"strings"
 )
 
 var safeMap util.SafeMap
@@ -17,6 +18,8 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func jsonHandler(w http.ResponseWriter, r *http.Request) {
+    enableCors(&w)
+    fmt.Println("/json")
     if r.Method == http.MethodOptions {
         return
     }
@@ -34,8 +37,6 @@ func jsonHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func jsonPostHandler(w http.ResponseWriter, r *http.Request) {
-    enableCors(&w) // enable CORS
-
     var requestBody util.ProgressInfo
     err := json.NewDecoder(r.Body).Decode(&requestBody)
     if err != nil {
@@ -96,11 +97,22 @@ func getInfoHandler(w http.ResponseWriter, r *http.Request) {
     }
 }
 
+func fileHandler(w http.ResponseWriter, r *http.Request) {
+    requestedPath := r.URL.Path
+    if strings.HasPrefix(requestedPath, "/static/") {
+        fs := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
+        fs.ServeHTTP(w, r)
+    } else {
+        http.NotFound(w, r)
+    }
+}
+
 func main() {
     safeMap = (&util.SafeMap{}).New()
 
     http.HandleFunc("/json", jsonHandler)
     http.HandleFunc("/get", getInfoHandler)
+    http.HandleFunc("/", fileHandler)
 
     log.Println("Server is running on http://localhost:8080")
     log.Fatal(http.ListenAndServe(":8080", nil))
