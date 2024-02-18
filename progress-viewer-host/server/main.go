@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"server/util"
-	"strings"
 )
 
 var safeMap util.SafeMap
@@ -98,14 +97,11 @@ func getInfoHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func fileHandler(w http.ResponseWriter, r *http.Request) {
-    requestedPath := r.URL.Path
-    if strings.HasPrefix(requestedPath, "/static/") {
-        fs := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
-        fs.ServeHTTP(w, r)
-    } else {
-        http.NotFound(w, r)
-    }
+    dir := "./static"
+    fileServer := http.FileServer(http.Dir(dir))
+    fileServer.ServeHTTP(w, r)
 }
+
 
 func main() {
     safeMap = (&util.SafeMap{}).New()
