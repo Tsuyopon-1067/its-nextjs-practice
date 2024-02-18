@@ -1,10 +1,10 @@
 class ReceivedData {
   data: ProgressData[];
-  date: Date;
+  time: string;
 
-  constructor(data: ProgressData[], date: Date) {
+  constructor(data: ProgressData[], time: string) {
     this.data = data;
-    this.date = date;
+    this.time = time;
   }
 }
 
@@ -21,3 +21,4 @@ class ProgressData {
 }
 
 export { ProgressData, ReceivedData };
+

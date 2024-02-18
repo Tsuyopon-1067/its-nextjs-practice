@@ -98,6 +98,13 @@ export default function ProgressTable({addr}: ProgressTableProps) {
           ))}
         </TableBody>
       </Table>
+      <p style={{fontSize: " 10pt", margin: "3pt 8pt", textAlign: "right"}}>
+        {
+          jsonData?.time !== undefined ?
+          jsonData.time
+          : "Now Loading..."
+        }
+      </p>
     </TableContainer>
   );
 }
