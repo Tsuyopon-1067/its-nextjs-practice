@@ -7,7 +7,8 @@ import Typography from '@mui/material/Typography';
 import { alpha, styled } from '@mui/material/styles';
 
 interface TopBarProps {
-  onchange: (arg: string) => (void);
+  onchangeId: (arg: string) => (void);
+  onchangeAddr: (arg: string) => (void);
 }
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -41,7 +42,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function TopBar({onchange}: TopBarProps) {
+export default function TopBar({onchangeId, onchangeAddr}: TopBarProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -64,9 +65,16 @@ export default function TopBar({onchange}: TopBarProps) {
           </Typography>
           <Search>
             <StyledInputBase
+              placeholder="IP addres …"
+              inputProps={{ 'aria-label': 'search' }}
+              onChange={(e) => onchangeAddr(e.target.value)}
+            />
+          </Search>
+          <Search>
+            <StyledInputBase
               placeholder="ID…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(e) => onchange(e.target.value)}
+              onChange={(e) => onchangeId(e.target.value)}
             />
           </Search>
         </Toolbar>

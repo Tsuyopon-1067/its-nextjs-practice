@@ -27,18 +27,38 @@ function App() {
     ]
   );
   const [id, setId] = useState<string>("");
+  const [addr, setAddr] = useState<string>("");
   const [jsonStr, setJsonStr] = useState<string>("");
 
   useEffect(() => {
     const tmp = new ProgressData(id, formerLabelInfos, latterLabelInfos);
     const strTmp = tmp.toJson();
     setJsonStr(strTmp);
-  }, [id, formerLabelInfos, latterLabelInfos]);
+    postData(strTmp);
+  }, [id, addr, formerLabelInfos, latterLabelInfos]);
+
+  const postData = (data: string) => {
+    const url = `https://${addr}/json/`;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: data,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  };
 
   return (
     <div className={styles.main_div}>
       <div className={styles.header}>
-        <TopBar onchange={setId} />
+        <TopBar onchangeId={setId} onchangeAddr={setAddr} />
       </div>
       <div className={styles.sw_div}>
         <p className={styles.title_p}>基本</p>
@@ -47,6 +67,7 @@ function App() {
         <p className={styles.title_p}>発展</p>
         <Switchs labels={latterLabelInfos} handler={setLatterLabelInfos} />
       </div>
+      <p>{addr}</p>
       <p>{jsonStr}</p>
     </div>
   )
