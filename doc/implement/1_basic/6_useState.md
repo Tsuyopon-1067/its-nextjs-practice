@@ -61,3 +61,10 @@ export default function Home() {
 ```
 
 これでボタンを押すと画面表示が切り替わる．
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：1-5. ボタンの追加](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/5_button.md)
+
+[次へ：1-7. 外部サーバへのアクセス](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/7_api.md)

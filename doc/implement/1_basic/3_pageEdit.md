@@ -74,3 +74,10 @@ export default function Home() {
     );
 }
 ```
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：1-2. 起動](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/2_refactoring/2_component.md)
+
+[次へ：1-4. 変数の表示](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/4_displayVariable.md)

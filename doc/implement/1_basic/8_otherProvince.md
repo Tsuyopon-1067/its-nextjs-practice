@@ -104,3 +104,10 @@ export default function Home() {
 ```
 
 これで都道府県を切り替えたときに表示される天気情報も更新されるようになった．一応基本機能は完成．
+
+##
+[実装トップ](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/0_implement.md)
+
+[前へ：1-7. 外部サーバへのアクセス](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/1_basic/7_api.md)
+
+[次へ：2-1. 都道府県データのクラス化](https://github.com/Tsuyopon-1067/its-nextjs-practice/blob/main/doc/implement/2_refactoring/1_class.md)
