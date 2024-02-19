@@ -1,6 +1,6 @@
 ### ページ編集
 
-ctrl+z で `npm run dev` を一度終了させる．このとき next-practice ディレクトリにいるはずなので，以下のコマンドを実行すれば Next.js のプロジェクトフォルダを VsCode で開くことができる．
+ctrl+c で `npm run dev` を一度終了させる．このとき next-practice ディレクトリにいるはずなので，以下のコマンドを実行すれば Next.js のプロジェクトフォルダを VsCode で開くことができる．
 
 ```
 code .
