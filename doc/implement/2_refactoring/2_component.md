@@ -21,7 +21,7 @@
 
 とりあえず関連部分のコードを切り出して以下のように貼り付ける．
 
-```
+```TypeScript
 export default function ProvinceSelectButton() {
     const inc = () => {
         setIdx((idx + 1) % provinces.length);
@@ -48,7 +48,7 @@ export default function ProvinceSelectButton() {
 
 引数の形式を interface で定義した変数を使うように書き換える． として以下のように定義する．
 
-```
+```TypeScript
 interface Props {
     length: number;
     setIdx: (idx: number) => void;
@@ -58,13 +58,13 @@ interface Props {
 
 初見では`setIdx`がわかりにくい．":"以下の
 
-```
+```TypeScript
 (idx: number) => void
 ```
 
 部分が型．
 
-```
+```TypeScript
 (引数) => 戻り値
 ```
 
@@ -75,25 +75,25 @@ interface Props {
 
 まず
 
-```
+```TypeScript
 { length, setIdx, idx }
 ```
 
 でオブジェクトとして 3 つの変数をまとめて書き，その後ろに型名（interface 名）を書く．
 
-```
+```TypeScript
 { length, setIdx, idx }: Props
 ```
 
 あとは()の中に 型情報を書くだけ．
 
-```
+```TypeScript
 export default function ProvinceSelectButton({ length, setIdx, idx }: Props) {
 ```
 
 また，コンポーネント内で定義される関数`inc`, `dec`では interface で定義した変数を使うように書き換える．`provinces.length` から `length` に簡略化出来た．
 
-```
+```TypeScript
 const inc = () => {
     setIdx((idx + 1) % length);
 };
@@ -104,7 +104,7 @@ const dec = () => {
 
 `ProvinceSelectButton.tsx`のコード全体は以下のようになる．
 
-```
+```TypeScript
 interface Props {
     length: number;
     setIdx: (idx: number) => void;
@@ -131,7 +131,7 @@ export default function ProvinceSelectButton({ length, setIdx, idx }: Props) {
 
 次は`Page.tsx`から`ProvinceSelectButton.tsx`を呼び出せるようにする．以下の部分を書き換える．
 
-```
+```TypeScript
 <div>
     <p>{provinces[idx].name}</p>
     <p>{data && data.text}</p>
@@ -142,7 +142,7 @@ export default function ProvinceSelectButton({ length, setIdx, idx }: Props) {
 
 書き換えるとこのようになる．2 つのボタンが 1 つのコンポーネントになったかわりに，コンポーネントに引数を与えている．
 
-```
+```TypeScript
 <div>
     <p>{provinces[idx].name}</p>
     <p>{data && data.text}</p>
@@ -158,7 +158,7 @@ export default function ProvinceSelectButton({ length, setIdx, idx }: Props) {
 
 すると`Page.tsx`のコード全体は以下のようになる．
 
-```
+```TypeScript
 "use client";
 
 import { useEffect, useState } from "react";

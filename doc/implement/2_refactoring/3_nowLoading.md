@@ -4,26 +4,26 @@
 
 結論はとても単純．この部分を
 
-```
+```TypeScript
 <p>{data && data.text}</p>
 ```
 
 このように書き換えるだけ．
 
-```
+```TypeScript
 <p>{data ? data.text : "Now Loading"}</p>
 ```
 
 仕組みを理解するためには三項演算子について理解する必要がある．
 三項演算子の文法は以下の通り．
 
-```
+```TypeScript
 条件 ? 条件がtrueのときの値 : 条件がfalseのときの値
 ```
 
 if 文による代入は三項演算子で書き換えることができる．これは
 
-```
+```TypeScript
 const num = 3;
 let hoge;
 if (num === 3) {
@@ -37,14 +37,14 @@ hoge = num === 3 ? 1 : 0;
 
 以下と同じ処理である．
 
-```
+```TypeScript
 const num = 3;
 let hoge = num === 3 ? 1 : 0;
 ```
 
 条件部分を()で囲むとわかりやすい．
 
-```
+```TypeScript
 const num = 3;
 let hoge = (num === 3) ? 1 : 0;
 ```
@@ -53,13 +53,13 @@ let hoge = (num === 3) ? 1 : 0;
 
 `==`を使っていると，このような文だと`3 == "3"`が`true`判定になり，yes が表示される．
 
-```
+```TypeScript
 <p>{3 == "3" ? "yes" : "no"}</p>
 ```
 
 話を戻すと，三項演算子により，
 
-```
+```TypeScript
 <p>{data ? data.text : "Now Loading"}</p>
 ```
 
