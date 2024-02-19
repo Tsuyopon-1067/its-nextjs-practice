@@ -2,7 +2,7 @@
 
 今のプログラムではボタンを押しても変更が反映されない理由は，変数 `idx` の変更が React に伝えられないため．変更が React に伝えられていない場合，画面が書き換わらないため，見かけ上は何も起こっていないように見える．一応内部的には変数が書きかけられている．それは `console.log` を使って変数の中身を出力すればわかる．出力内容はブラウザの開発者機能から確認できる．
 
-```
+```TypeScript
 const inc = () => {
     idx = (idx + 1) % area.length;
     console.log(idx);
@@ -17,13 +17,13 @@ const dec = () => {
 
 `idx` の宣言は以下のように書き換える．
 
-```
+```TypeScript
 const [idx, setIdx] = useState<number>(0);
 ```
 
 `idx` の更新部分は以下のように書き換える．
 
-```
+```TypeScript
 const inc = () => {
     setIdx((idx + 1) % area.length);
 };
@@ -34,7 +34,7 @@ const dec = () => {
 
 コード全体は以下のようになる．`UseState` の import は VsCode であれば自動で入るはずだが，入っていない場合は手動で追加する．
 
-```
+```TypeScript
 "use client";
 
 import { useState } from "react";

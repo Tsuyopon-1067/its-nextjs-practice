@@ -8,7 +8,7 @@ https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json
 
 から JSON を取得してみる．このときは以下のコードを使う．
 
-```
+```TypeScript
 useEffect(() => {
     const apiUrl = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json";
     const fetchData = async () => {
@@ -27,13 +27,13 @@ useEffect(() => {
 
 新たに `UseEffect` という概念が登場した．`UseEffect` の文法は以下の通り．副作用は実行する処理のこと．今回は気象庁のサーバから JSON を取得して変数 `data` に格納する処理．管理される値の配列が更新された時，副作用が実行される．
 
-```
+```TypeScript
 useEffect(副作用, [管理する値の配列]);
 ```
 
 取得される JSON は以下のような形式になっている．これはブラウザから JSON 取得 URL にアクセスすることでも確認できる．
 
-```
+```TypeScript
 {
     publishingOffice
     reportDatetime
@@ -45,7 +45,7 @@ useEffect(副作用, [管理する値の配列]);
 
 今回は text を取得する．そのため，以下のようにして text を取り出す．
 
-```
+```TypeScript
 <div>
     <p>{area[idx]}</p>
     <p>{data.text}</p>
@@ -56,13 +56,13 @@ useEffect(副作用, [管理する値の配列]);
 
 このままだとページ読み込み後にエラーが出ることがある．これは気象庁か JSON を取得していないときに `data.txt` を表示しようとしたため．そこで，data が `null` ではないときだけに表示するように処理を変える必要がある．それは以下のように書けば実現できる．
 
-```
+```HTML
 <p>{data && data.text}</p>
 ```
 
 これはショートサーキット評価を利用している．ブール演算で，
 
-```
+```TypeScript
 a && b
 ```
 
@@ -70,7 +70,7 @@ a && b
 
 コード全体は以下のようになる．
 
-```
+```TypeScript
 "use client";
 
 import { useEffect, useState } from "react";
@@ -116,7 +116,7 @@ export default function Home() {
 
 これで静岡県の天気情報が文章で表示される．一応動作するが，エディタ上では
 
-```
+```TypeScript
 data.text
 ```
 
@@ -124,7 +124,7 @@ data.text
 
 受け取る JSON の形式は`interface`で定義する．
 
-```
+```TypeScript
 interface ForcastData {
     publishingOffice: string;
     reportDatetime: string;
@@ -136,7 +136,7 @@ interface ForcastData {
 
 そして，`data` の初期化部分で `data` は `ForcastData` 型であることを定義する．
 
-```
+```TypeScript
 const [data, setData] = useState<ForcastData>();
 ```
 
@@ -144,7 +144,7 @@ const [data, setData] = useState<ForcastData>();
 
 コード全体は以下のようになる．
 
-```
+```TypeScript
 "use client";
 
 import { useEffect, useState } from "react";

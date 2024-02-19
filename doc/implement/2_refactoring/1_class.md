@@ -31,7 +31,7 @@ export default class Province {
 
 Page.tsx に戻る．`area`と`code`は以下のようにまとめられる．
 
-```
+``` TypeScript
 const provinces: Province[] = [
     new Province("山梨県", "190000"),
     new Province("長野県", "200000"),
@@ -43,13 +43,13 @@ const provinces: Province[] = [
 
 `Province`の import が自動で行われなかった場合は以下のように追記．
 
-```
+```TypeScript
 import Province from "./Province";
 ```
 
 `area`・`code` だった部分を修正すると，コード全体は以下のようになる．
 
-```
+``` TypeScript
 "use client";
 
 import { useEffect, useState } from "react";
@@ -105,7 +105,6 @@ export default function Home() {
         </div>
     );
 }
-
 ```
 
 ##

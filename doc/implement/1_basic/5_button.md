@@ -2,7 +2,7 @@
 
 button タグを追加すると画面上にボタンが増える．
 
-```
+```TypeScript
 <div>
     <p>{area[3]}</p>
     <button>+</button>
@@ -14,7 +14,7 @@ button タグを追加すると画面上にボタンが増える．
 
 -   インデックスの変数化
 
-```
+```TypeScript
 let idx: number = 0;
 ︙
 <div>
@@ -26,7 +26,7 @@ let idx: number = 0;
 アロー関数の形式は以下の通り．
 今回は inc と dec の 2 つを作成する．
 
-```
+```TypeScript
     const 関数名 = (引数とか) => {
         処理
     }
@@ -34,7 +34,7 @@ let idx: number = 0;
 
 これをコードに組み込む．先頭に use client を加えることを忘れずに．これは Next.js の仕様上必要．
 
-```
+```TypeScript
 "use client";
 
 export default function Home() {

@@ -16,7 +16,7 @@ code .
 
 @/src/app/page.tsx を開く．
 
-```
+```TypeScript
 import Image from "next/image";
 import styles from "./page.module.css";
 
@@ -30,7 +30,7 @@ export default function Home() {
 
 この長いやつを一気に削除．ここまで消してしまう．
 
-```
+```TypeScript
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -41,7 +41,7 @@ export default function Home() {
 
 src/app/layout.tsx を開く．最初の方はこんなコードになっている．globals.css の import を削除する．するとページの装飾が消える．
 
-```
+```TypeScript
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -49,7 +49,7 @@ import "./globals.css";
 
 main タグ部分を消して div に変える．そしてこんな感じで中身を追加．ページがテキストだけになる．
 
-```
+```TypeScript
 export default function Home() {
     return (
         <div>
@@ -65,7 +65,7 @@ export default function Home() {
 
 div の中身を消して hogehoge に変えれば当然 hogehoge になる．
 
-```
+```TypeScript
 export default function Home() {
     return (
         <div>
