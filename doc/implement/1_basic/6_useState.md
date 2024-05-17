@@ -3,12 +3,12 @@
 今のプログラムではボタンを押しても変更が反映されない理由は，変数 `idx` の変更が React に伝えられないため．変更が React に伝えられていない場合，画面が書き換わらないため，見かけ上は何も起こっていないように見える．一応内部的には変数が書きかけられている．それは `console.log` を使って変数の中身を出力すればわかる．出力内容はブラウザの開発者機能から確認できる．
 
 ```TypeScript
-const inc = () => {
-    idx = (idx + 1) % area.length;
-    console.log(idx);
-};
 const dec = () => {
     idx = (idx + area.length - 1) % area.length;
+    console.log(idx);
+};
+const inc = () => {
+    idx = (idx + 1) % area.length;
     console.log(idx);
 };
 ```
@@ -18,17 +18,22 @@ const dec = () => {
 `idx` の宣言は以下のように書き換える．
 
 ```TypeScript
-const [idx, setIdx] = useState<number>(0);
+let idx: number = 0; // これを消す
+const [idx, setIdx] = useState<number>(0); // これを書く
 ```
 
 `idx` の更新部分は以下のように書き換える．
 
 ```TypeScript
-const inc = () => {
-    setIdx((idx + 1) % area.length);
-};
 const dec = () => {
-    setIdx((idx + area.length - 1) % area.length);
+    idx = (idx + area.length - 1) % area.length; // 消す
+    console.log(idx); // 消す
+    setIdx((idx + area.length - 1) % area.length); // 書く
+};
+const inc = () => {
+    idx = (idx + 1) % area.length; // 消す
+    console.log(idx); // 消す
+    setIdx((idx + 1) % area.length); // 書く
 };
 ```
 
@@ -42,18 +47,18 @@ import { useState } from "react";
 export default function Home() {
     const area: String[] = ["山梨県", "長野県", "岐阜県", "静岡県", "愛知県"];
     const [idx, setIdx] = useState<number>(0);
-    const inc = () => {
-        setIdx((idx + 1) % area.length);
-    };
     const dec = () => {
         setIdx((idx + area.length - 1) % area.length);
+    };
+    const inc = () => {
+        setIdx((idx + 1) % area.length);
     };
 
     return (
         <div>
             <p>{area[idx]}</p>
-            <button onClick={inc}>+</button>
             <button onClick={dec}>-</button>
+            <button onClick={inc}>+</button>
         </div>
     );
 }
