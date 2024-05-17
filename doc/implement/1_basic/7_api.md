@@ -9,6 +9,8 @@ https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json
 から JSON を取得してみる．このときは以下のコードを使う．
 
 ```TypeScript
+const [data, setData] = useState(null);
+
 useEffect(() => {
     const apiUrl = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json";
     const fetchData = async () => {
@@ -49,8 +51,8 @@ useEffect(副作用, [管理する値の配列]);
 <div>
     <p>{area[idx]}</p>
     <p>{data.text}</p>
-    <button onClick={inc}>+</button>
     <button onClick={dec}>-</button>
+    <button onClick={inc}>+</button>
 </div>
 ```
 
@@ -125,7 +127,7 @@ data.text
 受け取る JSON の形式は`interface`で定義する．
 
 ```TypeScript
-interface ForcastData {
+interface ForecastData {
     publishingOffice: string;
     reportDatetime: string;
     targetArea: string;
@@ -134,10 +136,10 @@ interface ForcastData {
 }
 ```
 
-そして，`data` の初期化部分で `data` は `ForcastData` 型であることを定義する．
+そして，`data` の初期化部分で `data` は `ForecastData` 型であることを定義する．
 
 ```TypeScript
-const [data, setData] = useState<ForcastData>();
+const [data, setData] = useState<ForecastData>();
 ```
 
 これで警告は消える．
@@ -149,7 +151,7 @@ const [data, setData] = useState<ForcastData>();
 
 import { useEffect, useState } from "react";
 
-interface ForcastData {
+interface Forecast {
     publishingOffice: string;
     reportDatetime: string;
     targetArea: string;
@@ -167,7 +169,7 @@ export default function Home() {
         setIdx((idx + area.length - 1) % area.length);
     };
 
-    const [data, setData] = useState<ForcastData>();
+    const [data, setData] = useState<ForecastData>();
 
     useEffect(() => {
         const apiUrl =

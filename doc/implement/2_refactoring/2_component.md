@@ -165,7 +165,7 @@ import { useEffect, useState } from "react";
 import Province from "./Province";
 import ProvinceSelectButton from "./conponents/ProvinceSelectButton";
 
-interface ForcastData {
+interface ForecastData {
     publishingOffice: string;
     reportDatetime: string;
     targetArea: string;
@@ -183,7 +183,7 @@ export default function Home() {
     ];
     const [idx, setIdx] = useState<number>(0);
 
-    const [data, setData] = useState<ForcastData>();
+    const [data, setData] = useState<ForecastData>();
 
     useEffect(() => {
         const apiUrl = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${provinces[idx].code}.json`;

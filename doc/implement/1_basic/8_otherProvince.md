@@ -56,7 +56,7 @@ useEffect(() => {
 
 import { useEffect, useState } from "react";
 
-interface ForcastData {
+interface ForecastData {
     publishingOffice: string;
     reportDatetime: string;
     targetArea: string;
@@ -75,7 +75,7 @@ export default function Home() {
         setIdx((idx + area.length - 1) % area.length);
     };
 
-    const [data, setData] = useState<ForcastData>();
+    const [data, setData] = useState<ForecastData>();
 
     useEffect(() => {
         const apiUrl = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${code[idx]}.json`;
@@ -96,8 +96,8 @@ export default function Home() {
         <div>
             <p>{area[idx]}</p>
             <p>{data && data.text}</p>
-            <button onClick={inc}>+</button>
             <button onClick={dec}>-</button>
+            <button onClick={inc}>+</button>
         </div>
     );
 }
