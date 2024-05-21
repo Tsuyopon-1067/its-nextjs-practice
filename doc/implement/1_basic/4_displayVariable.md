@@ -11,7 +11,7 @@ let [変数名]: [型名] = [初期値];
 
 ```TypeScript
 export default function Home() {
-    let neko: String = "nyanyanya";
+    let neko: string = "nyanyanya";
     return (
         <div>
             <p>{neko}</p>
@@ -24,7 +24,7 @@ export default function Home() {
 
 ```TypeScript
 export default function Home() {
-    const area: String[] = ["山梨県", "長野県", "岐阜県", "静岡県", "愛知県"];
+    const area: string[] = ["山梨県", "長野県", "岐阜県", "静岡県", "愛知県"];
     return (
         <div>
             <p>{area[3]}</p>

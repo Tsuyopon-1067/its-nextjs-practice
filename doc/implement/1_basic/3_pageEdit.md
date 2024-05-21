@@ -42,9 +42,9 @@ export default function Home() {
 src/app/layout.tsx を開く．最初の方はこんなコードになっている．globals.css の import を削除する．するとページの装飾が消える．
 
 ```TypeScript
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"; // 残す
+import { Inter } from "next/font/google"; // 残す
+import "./globals.css"; // 消す
 ```
 
 main タグ部分を消して div に変える．そしてこんな感じで中身を追加．ページがテキストだけになる．

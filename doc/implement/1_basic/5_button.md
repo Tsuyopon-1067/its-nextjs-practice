@@ -50,8 +50,8 @@ export default function Home() {
     return (
         <div>
             <p>{area[idx]}</p>
-            <button onClick={inc}>+</button>
             <button onClick={dec}>-</button>
+            <button onClick={inc}>+</button>
         </div>
     );
 }
